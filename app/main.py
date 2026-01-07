@@ -3,11 +3,9 @@ import os
 
 def move_file(command: str) -> None:
     split_command = command.split()
-    if len(split_command) != 3:
-        raise IndexError
+    cmd, source, dest_parts = split_command[0], split_command[1], split_command[2]
     if split_command[0] != "mv":
-        raise SyntaxError("It`s not command")
-    source, dest_parts = split_command[1], split_command[2]
+        raise SyntaxError('It`s not command')
     file_name = os.path.basename(source)
     if dest_parts.endswith(os.sep):
         target_file_path = os.path.join(dest_parts, file_name)
